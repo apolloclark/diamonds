@@ -53,7 +53,7 @@ vagrant box add dummy https://github.com/mitchellh/vagrant-aws/raw/master/dummy.
 ```
 - git clone this repo
 ```Shell
-git clone
+git clone https://github.com/apolloclark/diamonds
 ```
 - choose which version of Kali you want (cli vs. gui)
 - choose which meta-package you want
