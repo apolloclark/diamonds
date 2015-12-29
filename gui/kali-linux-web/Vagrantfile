@@ -1,0 +1,119 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.configure(2) do |config|
+
+    # by default, use the empty dummy box
+    config.vm.box = "dummy"
+    config.vm.box_url = "https://github.com/mitchellh/vagrant-aws/raw/master/dummy.box"
+
+    # default provisioning script
+    config.vm.provision :shell, path: "./../../bootstrap_base.sh"
+    config.vm.provision :shell, path: "./provision/bootstrap.sh"
+    config.vm.provision :shell, path: "./../bootstrap_vino.sh"
+    config.vm.provision :shell, path: "./../../bootstrap_cleanup.sh"
+
+
+
+    # Use Virtualbox by default
+    config.vm.provider "virtualbox"
+    config.vm.provider "aws"
+
+    # VirtualBox Provider-specific configuration
+    config.vm.provider "virtualbox" do |vb, override|
+
+        # set the basebox to be Debian Jessie 64-bit, w/ 20 GB storage   
+        # @see https://atlas.hashicorp.com/debian/boxes/jessie64
+        override.vm.box = "ARTACK/debian-jessie"
+        override.vm.box_url = "https://atlas.hashicorp.com/ARTACK/boxes/debian-jessie/versions/8.1.0/providers/virtualbox.box"
+
+        # show the UI
+    
+        # set the CPU, memory, acceleration
+        vb.cpus = 1
+        vb.memory = "2048"
+        vb.customize ["modifyvm", :id, "--ioapic", "on"]
+        vb.customize ["modifyvm", :id, "--hwvirtex", "on"]
+        
+        # Customize graphic
+        vb.gui = true
+        vb.customize ["modifyvm", :id, "--vram", "128"]
+        vb.customize ["modifyvm", :id, "--graphicscontroller", "vboxvga"]
+        
+        # Share a folder to the guest VM, types: docker, nfs, rsync, smb, virtualbox
+        # Windows supports: smb
+        # Mac supports: rsync, nfs
+        # override.vm.synced_folder host_folder.to_s, guest_folder.to_s, type: "smb"
+        override.vm.synced_folder "./data", "/vagrant"
+        
+        # Create a forwarded port mapping which allows access to a specific port
+        # within the machine from a port on the host machine. In the example below,
+        # accessing "localhost:8080" will access port 80 on the guest machine.
+        # override.vm.network "forwarded_port", guest: 80, host: 8080
+ 
+        # setup local apt-get cache
+        # if Vagrant.has_plugin?("vagrant-cachier")
+            # Configure cached packages to be shared between instances of the same base box.
+            # More info on the "Usage" link above
+            # override.cache.scope = :box
+        # end
+    end
+
+
+
+    # configuration when deploying to Amazon
+    config.vm.provider :aws do |aws, override|
+    
+        # Load sensitive AWS credentials from external file, DO NOT save in Repo!!!
+        # @see http://blog-osshive.rhcloud.com/2014/02/05/provisioning-aws-instances-with-vagrant/
+        require 'yaml'
+        aws_filepath = File.dirname(__FILE__) + "./../../aws-config.yml"
+        if File.exist?(aws_filepath)
+            aws_config  = YAML.load_file(aws_filepath)["aws"]
+        else
+            print "Error: '" + aws_filepath + "' is missing...\n"
+        end
+        
+        # set AWS creds
+        aws.access_key_id             = aws_config["access_key_id"]
+        aws.secret_access_key         = aws_config["secret_access_key"]
+        aws.keypair_name              = aws_config["keypair_name"]
+        
+        # configure SSH... and fuck Windows file pathwyas...
+        override.ssh.private_key_path = aws_config["pemfile"]
+        override.ssh.username         = "admin"
+
+        # use Debian / Jessie 64-bit HVM
+        # @see https://wiki.debian.org/Cloud/AmazonEC2Image/Jessie
+        aws.region = "us-east-1"
+        aws.ami = "ami-116d857a"
+            # "ami-116d857a" HVM
+            # "ami-896d85e2" Paravirtualization
+        
+        # set instance settings
+        # @see https://aws.amazon.com/ec2/instance-types/
+        aws.instance_ready_timeout    = 180
+        aws.instance_type             = "t2.large"
+        aws.associate_public_ip       = true
+        aws.subnet_id                 = aws_config["subnet_id"]
+        aws.tags = {
+            'Name' => 'kali-linux-web-gui',
+        }
+        # use 40GB, because we're size queens that like it UUGE!
+        aws.block_device_mapping = [
+            {
+                'DeviceName' => '/dev/xvda',
+                'Ebs.VolumeSize' => 40,
+                'Ebs.DeleteOnTermination' => 'false'
+            }
+        ]
+        
+        # disable local file sharing, to prevent issues with Windows hosts
+        override.vm.synced_folder "./data", "/vagrant", disabled: true
+    
+        # disable the vbguest update plugin
+        if Vagrant.has_plugin?("vagrant-vbguest")
+            override.vbguest.auto_update = false
+        end
+    end
+end

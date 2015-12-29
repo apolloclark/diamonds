@@ -1,0 +1,6 @@
+aws:
+  access_key_id     : 'AAAAAAAAAAAAAAAAAAAA'
+  secret_access_key : 'AAAA/AAAAAAA/AAAA/AAAAAAAAAAAAAAAAAAAA'
+  keypair_name      : 'keypair_name'
+  pemfile           : 'keypair_file.pem'
+  subnet_id         : 'subnet-cccccccc'
