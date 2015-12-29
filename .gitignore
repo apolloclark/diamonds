@@ -1,2 +1,3 @@
 .vagrant
-.projectaws-config.yml
+.project
+aws-config.yml
