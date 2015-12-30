@@ -175,11 +175,11 @@ Scripts run, in order:
 
 ## FAQ
 
-### This is awesome!
+#### This is awesome!
 
 Not a question, but thanks! :)
 
-### Yo shit broke!
+#### Yo shit broke!
 
 Again, not a question, but let me know. Best place is here on Github, open a
 ticket, and be VERY detailed with your exact setup, send me screenshots. **If I
@@ -228,27 +228,27 @@ bash --version
 If you do ALL of this, I may be able to help you, no guarantees. It may
 take a few weeks, unless you want to hire me as a consultant.
 
-### Can you remove the SSH tunnel for VNC?
+#### Can you remove the SSH tunnel for VNC?
 
 You can, but I chose not to, because it would be insecure. You could use a
 different VNC server, but would lose access to the Kali default Gnome 3.14
 desktop.
 
-### Why did you call it "Diamonds"?
+#### Why did you call it "Diamonds"?
 
 I chose that name purely so I can go up to people at Defcon and ask them:
 
-**"Have you ever used Kal in the cloud with diamonds?"**
+**"Have you ever used Kali in the cloud with Diamonds?"**
 
-### Do you work for Offensive Security?
+#### Do you work for Offensive Security?
 
 Not yet. I'm still waiting on that owl to deliver my letter...
 
-### Can you build this for Azure?
+#### Can you build this for Azure?
 
 It's not at the top of my list, but I'll think about it.
 
-### Do you do consulting?
+#### Do you do consulting?
 
 Yessir! You can email me: apolloclark@gmail.com
 
