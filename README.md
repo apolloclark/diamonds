@@ -29,19 +29,22 @@ Do the "Platform Specific Install" steps, then do the "General Install" steps.
 
 Windows:
 - update Powershell, https://www.microsoft.com/en-us/download/details.aspx?id=48729
-- install puTTY
-- install puTTYgen
-- install TightVNCViewer
-- install Cygwin
+- install puTTY, http://the.earth.li/~sgtatham/putty/latest/x86/putty.exe
+- install puTTYgen, http://the.earth.li/~sgtatham/putty/latest/x86/puttygen.exe
+- install TightVNCViewer, http://www.tightvnc.com/download.php
+- install Cygwin, https://cygwin.com/install.html
 
 Mac / Linux:
 - install vnc viewer
 
 General Install:
-- install, configure AWS-CLI
+- install Python, https://www.python.org/downloads/
+- install Pip, https://pip.pypa.io/en/stable/installing/
+- install, configure AWS-CLI, https://github.com/aws/aws-cli
 - configure your AWS default security group to allow SSH access to your IP
-- install Virtualbox (optional)
-- install Vagrant
+- install Virtualbox (optional), https://www.virtualbox.org/wiki/Downloads
+- install Virtualbox Guest Additions (optional), https://www.virtualbox.org/wiki/Downloads
+- install Vagrant, https://www.vagrantup.com/downloads.html
 - install vagrant plugins
 ```Shell
 vagrant plugin install vagrant-aws
@@ -55,11 +58,11 @@ vagrant box add dummy https://github.com/mitchellh/vagrant-aws/raw/master/dummy.
 ```Shell
 git clone https://github.com/apolloclark/diamonds
 ```
-- choose which version of Kali you want (cli vs. gui)
+- choose which version of Kali you want (Command Line / cli vs. Desktop / gui)
 - choose which meta-package you want
 - rename "aws-config-example.yml" to "aws-config.yml"
 - update the "aws-config.yml" with your AWS credentials and settings
-- on the console, cd into the folder, ex:
+- cd into the folder server-type you want, ex:
 ```Shell
 cd ./vagrant-kali/gui/kali-linux-web
 ```
@@ -72,6 +75,7 @@ vagrant up
 vagrant up --provider=aws
 ```
 - sit back (for like 30+ min sometimes...)
+- restart the server
 - Enjoy!
 
 
@@ -156,6 +160,12 @@ Vagrant sets up a virtual machine with resources (CPU, memory, harddrive,
 networking, fileshares, etc.), dwnloads a Debian Jessie basebox image,
 runs some Bash scripts, pulls down meta-packages from the Kali repo, installs
 everything, and you got a fresh Kali instance.
+
+Scripts run, in order:
+- bootstrap_base.yml
+- bootstrap.yml (within the metapackage folder, ex: "gui / kali-linux-web / provision")
+- gui / bootstrap_vino.yml (for gui version)
+- bootstrap_cleanup.yml
 
 
 
