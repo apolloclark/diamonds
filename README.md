@@ -57,6 +57,7 @@ git clone https://github.com/apolloclark/diamonds
 ```
 - choose which version of Kali you want (cli vs. gui)
 - choose which meta-package you want
+- rename "aws-config-example.yml" to "aws-config.yml"
 - update the "aws-config.yml" with your AWS credentials and settings
 - on the console, cd into the folder, ex:
 ```Shell
@@ -89,6 +90,7 @@ BOOM!
 
 Windows:
 - convert your AWS private key to a puTTY format, using puTTYgen
+
     https://github.com/Varying-Vagrant-Vagrants/VVV/wiki/Connect-to-Your-Vagrant-Virtual-Machine-with-PuTTY
 - open puTTY, setup a port forwarding for VNC, port 5900
     http://helpdeskgeek.com/how-to/tunnel-vnc-over-ssh/
