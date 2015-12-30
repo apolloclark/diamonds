@@ -11,6 +11,7 @@ penetration testing and audits. It is based on Debian Jessie 64-bit, using
 Gnome 3.14 desktop (available in other flavors), with a wealth of security tools.
 
 http://tools.kali.org/kali-metapackages
+
 https://www.kali.org/news/kali-linux-metapackages/
 
 | Name                 | Size  | Description                   |
@@ -250,7 +251,7 @@ I chose that name purely so I can go up to people at Defcon and ask them:
 
 Not yet. I'm still waiting on that owl to deliver my letter...
 
-##### Can you build this for Azure?
+##### Can you build this for Digital Ocean / Rackspace /Azure?
 
 It's not at the top of my list, but I'll think about it.
 
