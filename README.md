@@ -27,17 +27,17 @@ You can select from various meta-packages:
 
 Do the "Platform Specific Install" steps, then do the "General Install" steps.
 
-Windows:
+*Windows:*
 - update Powershell, https://www.microsoft.com/en-us/download/details.aspx?id=48729
 - install puTTY, http://the.earth.li/~sgtatham/putty/latest/x86/putty.exe
 - install puTTYgen, http://the.earth.li/~sgtatham/putty/latest/x86/puttygen.exe
 - install TightVNCViewer, http://www.tightvnc.com/download.php
 - install Cygwin, https://cygwin.com/install.html
 
-Mac / Linux:
+*Mac / Linux:*
 - install vnc viewer
 
-General Install:
+*General Install:*
 - install Python, https://www.python.org/downloads/
 - install Pip, https://pip.pypa.io/en/stable/installing/
 - install, configure AWS-CLI, https://github.com/aws/aws-cli
@@ -92,16 +92,17 @@ To access it, you'll need to SSH into the Kali instance. Luckily, a lot of the
 better quality VNC clients support this. Security of SSH, convenience of VNC,
 BOOM!
 
-Windows:
+*Windows:*
 - convert your AWS private key to a puTTY format, using puTTYgen
 
     https://github.com/Varying-Vagrant-Vagrants/VVV/wiki/Connect-to-Your-Vagrant-Virtual-Machine-with-PuTTY
 - open puTTY, setup a port forwarding for VNC, port 5900
+
     http://helpdeskgeek.com/how-to/tunnel-vnc-over-ssh/
 - open TightVNC
 - login to the VNC instance, at 127.0.0.1:5900
 
-Mac / Linx:
+*Mac / Linx:*
 - ssh into the Kali instance, setting up an SSH tunnel, ex:
 ```Shell
 ssh -nNT -L 5900:127.0.0.1:5900 admin@<ec2-dns> -i <aws_key_file>
@@ -114,6 +115,7 @@ ssh -nNT -L 5900:127.0.0.1:5900 admin@<ec2-dns> -i <aws_key_file>
 
 ### Vagrant
 https://www.vagrantup.com/
+
 Vagrant is an open-source DevOps tool for deployment automation, supporting:
 local deploys to Virtualbox, VMWare, vSphere, and many others; cloud services
 such as AWS, Rackspace, and Azure; and Linux Containers such as Docker. It
@@ -133,7 +135,9 @@ in Jenkins using a plugin.
 
 ### Jenkins
 https://jenkins-ci.org/
+
 https://wiki.jenkins-ci.org/display/JENKINS/Cucumber+Test+Result+Plugin
+
 Jenkins is a build automation tool, originally developed for creating Java apps.
 It has expanded to support many languages, and give easy reporting. Jenkins
 Build Jobs can be run manually, or on a schedule, and supports a wide range of
@@ -157,7 +161,7 @@ able to deploy it to AWS (with much difficulty).
 Under the covers, this thing is just creating a virtual machine, spinning up
 a fresh Debian Jessie instance, and running some Bash scripts. In more detail:
 Vagrant sets up a virtual machine with resources (CPU, memory, harddrive,
-networking, fileshares, etc.), dwnloads a Debian Jessie basebox image,
+networking, fileshares, etc.), downloads a Debian Jessie basebox image,
 runs some Bash scripts, pulls down meta-packages from the Kali repo, installs
 everything, and you got a fresh Kali instance.
 
@@ -178,16 +182,16 @@ Not a question, but thanks! :)
 ### Yo shit broke!
 
 Again, not a question, but let me know. Best place is here on Github, open a
-ticket, and be VERY detailed with your exact setup, send me screenshots. * If I
-can't reproduce your problem, I won't be able to fix it. *
+ticket, and be VERY detailed with your exact setup, send me screenshots. **If I
+can't reproduce your problem, I won't be able to fix it.**
 
 - Run the Vagrant command, add "--debug" at the end, include the output
 - Which VNC client are you using, version?
 - How are you establishing the SSH tunnel, program, version?
 
-Run these commands and include the results in your ticket:
+**Run these commands and include the results in your ticket:**
 
-All Systems:
+*All Systems:*
 ```Shell
 vagrant version
 vagrant plugin list
@@ -197,13 +201,13 @@ aws --version
 aws ec2 describe-tags
 ```
 
-Windows:
+*Windows:*
 ```Shell
 systeminfo | findstr /B /C:"OS Name" /C:"OS Version"
 powershell $PSVersionTable
 ```
 
-Mac:
+*Mac:*
 ```Shell
 sw_vers
 xcode-select -p
@@ -213,7 +217,7 @@ echo $BASH
 bash --version
 ```
 
-Linux:
+*Linux:*
 ```Shell
 uname -a
 echo $SHELL
@@ -233,7 +237,8 @@ desktop.
 ### Why did you call it "Diamonds"?
 
 I chose that name purely so I can go up to people at Defcon and ask them:
-"Have you ever used Kal in the cloud with diamonds?"
+
+**"Have you ever used Kal in the cloud with diamonds?"**
 
 ### Do you work for Offensive Security?
 
