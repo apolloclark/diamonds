@@ -54,8 +54,12 @@ debconf-set-selections <<< 'wireshark-common wireshark-common/install-setuid boo
 
 
 
-# create the admin user, if necessary
-# sudo adduser --shell /bin/bash admin sudo
+# create the "admin" user, if necessary
+if ! id -u admin > /dev/null 2>$1; then
+    sudo adduser  --disabled-password --gecos "" --shell /bin/bash --ingroup sudo admin
+    sudo chown -R admin /home/admin
+    echo "admin ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
+fi
 
 
 

@@ -1,25 +1,29 @@
 # Diamonds
 
-Would you like to build Kali Linux 2.0 from source? Want to run it on Amazon?
-How about making it easy for your dev team to run those same tests? Want to see
-it on your iPad or iPad Mini? I sure would, so I made it happen! :)
+**"Kali in the cloud with Diamonds!"**
+
+Would you like to build Kali Linux 2.0 from source, run it on Amazon, make it
+easy for your dev team to run your attacks, and see it on your iPad over VNC?
+I sure would, so I made it happen! :)
 
 Kali Linux is an open-source Linux distribution, intended for security
 penetration testing and audits. It is based on Debian Jessie 64-bit, using
-Gnome 3 desktop (available in other flavors), with a wealth of security tools.
+Gnome 3.14 desktop (available in other flavors), with a wealth of security tools.
 You can select from various meta-packages:
 
-- kali-linux-top10     3.5 GB, Top 10 tools
-- kali-linux-full      9 GB, default
-- kali-linux-all       15 GB, kitchen sink
-- kali-linux-forensic  3.1 GB
-- kali-linux-gpu       4.8 GB
-- kali-linux-pwtools   6.0 GB
-- kali-linux-rfid      1.5 GB
-- kali-linux-sdr       2.4 GB
-- kali-linux-voip      1.8 GB
-- kali-linux-web       4.9 GB
-- kali-linux-wireless  6.6 GB
+| Name                 | Size  | Description  |
+|----------------------|------:|--------------|
+| kali-linux-top10     | 3.5 GB| Top 10 tools |
+| kali-linux-full      | 9.0 GB| Default      |
+| kali-linux-all       |15.0 GB| kitchen sink |
+| kali-linux-forensic  | 3.1 GB|              |
+| kali-linux-gpu       | 4.8 GB|              |
+| kali-linux-pwtools   | 6.0 GB|              |
+| kali-linux-rfid      | 1.5 GB|              |
+| kali-linux-sdr       | 2.4 GB|              |
+| kali-linux-voip      | 1.8 GB|              |
+| kali-linux-web       | 4.9 GB|              |
+| kali-linux-wireless  | 6.6 GB|              |
 
 
 
@@ -38,13 +42,13 @@ Do the "Platform Specific Install" steps, then do the "General Install" steps.
 - install vnc viewer
 
 *General Install:*
-- install Python, https://www.python.org/downloads/
-- install Pip, https://pip.pypa.io/en/stable/installing/
-- install, configure AWS-CLI, https://github.com/aws/aws-cli
+- install [Python](https://www.python.org/downloads/)
+- install [Pip](https://pip.pypa.io/en/stable/installing/)
+- install, configure [AWS-CLI](https://github.com/aws/aws-cli)
 - configure your AWS default security group to allow SSH access to your IP
-- install Virtualbox (optional), https://www.virtualbox.org/wiki/Downloads
-- install Virtualbox Guest Additions (optional), https://www.virtualbox.org/wiki/Downloads
-- install Vagrant, https://www.vagrantup.com/downloads.html
+- install [Virtualbox](https://www.virtualbox.org/wiki/Downloads) (optional)
+- install [Virtualbox Guest Additions](https://www.virtualbox.org/wiki/Downloads) (optional)
+- install [Vagrant](https://www.vagrantup.com/downloads.html)
 - install vagrant plugins
 ```Shell
 vagrant plugin install vagrant-aws
@@ -64,7 +68,7 @@ git clone https://github.com/apolloclark/diamonds
 - update the "aws-config.yml" with your AWS credentials and settings
 - cd into the folder server-type you want, ex:
 ```Shell
-cd ./vagrant-kali/gui/kali-linux-web
+cd ./diamonds/gui/kali-linux-web
 ```
 - start vagrant, for a local instance, using Virtualbox:
 ```Shell
@@ -166,10 +170,10 @@ runs some Bash scripts, pulls down meta-packages from the Kali repo, installs
 everything, and you got a fresh Kali instance.
 
 Scripts run, in order:
-- bootstrap_base.yml
-- bootstrap.yml (within the metapackage folder, ex: "gui / kali-linux-web / provision")
-- gui / bootstrap_vino.yml (for gui version)
-- bootstrap_cleanup.yml
+- bootstrap_base.sh
+- bootstrap.sh (within the metapackage folder, ex: "gui / kali-linux-web / provision")
+- gui / bootstrap_vino.sh (for gui version)
+- bootstrap_cleanup.sh
 
 
 
