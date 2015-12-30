@@ -190,13 +190,8 @@ Not a question, but thanks! :)
 
 Again, not a question, but let me know. Best place is here on Github, open a
 ticket, and be VERY detailed with your exact setup, send me screenshots. **If I
-can't reproduce your problem, I won't be able to fix it.**
-
-- Run the Vagrant command, add "--debug" at the end, include the output
-- Which VNC client are you using, version?
-- How are you establishing the SSH tunnel, program, version?
-
-**Run these commands and include the results in your ticket:**
+can't reproduce your problem, I won't be able to fix it. Run these commands and
+include the results in your ticket:**
 
 *Windows:*
 ```Shell
@@ -231,6 +226,10 @@ ssh -v localhost
 aws --version
 aws ec2 describe-tags
 ```
+
+- Run the Vagrant command, add "--debug" at the end, include the output
+- Which VNC client are you using, version?
+- How are you establishing the SSH tunnel, program, version?
 
 If you do ALL of this, I may be able to help you, no guarantees. It may
 take a few weeks, unless you want to hire me as a consultant.
