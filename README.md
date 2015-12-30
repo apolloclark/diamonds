@@ -9,21 +9,24 @@ I sure would, so I made it happen! :)
 Kali Linux is an open-source Linux distribution, intended for security
 penetration testing and audits. It is based on Debian Jessie 64-bit, using
 Gnome 3.14 desktop (available in other flavors), with a wealth of security tools.
-You can select from various meta-packages:
 
-| Name                 | Size  | Description  |
-|----------------------|------:|--------------|
-| kali-linux-top10     | 3.5 GB| Top 10 tools |
-| kali-linux-full      | 9.0 GB| Default      |
-| kali-linux-all       |15.0 GB| kitchen sink |
-| kali-linux-forensic  | 3.1 GB|              |
-| kali-linux-gpu       | 4.8 GB|              |
-| kali-linux-pwtools   | 6.0 GB|              |
-| kali-linux-rfid      | 1.5 GB|              |
-| kali-linux-sdr       | 2.4 GB|              |
-| kali-linux-voip      | 1.8 GB|              |
-| kali-linux-web       | 4.9 GB|              |
-| kali-linux-wireless  | 6.6 GB|              |
+http://tools.kali.org/kali-metapackages
+https://www.kali.org/news/kali-linux-metapackages/
+
+| Name                 | Size  | Description                   |
+|----------------------|------:|-------------------------------|
+| kali-linux           | 1.5 GB| Default                       |
+| kali-linux-top10     | 3.5 GB| Top 10 tools                  |
+| kali-linux-full      | 9.0 GB| ISO Default                   |
+| kali-linux-all       |15.0 GB| Kitchen sink                  |
+| kali-linux-forensic  | 3.1 GB| Data recovery and analysis    |
+| kali-linux-gpu       | 4.8 GB| GPU accelerated hash cracking |
+| kali-linux-pwtools   | 6.0 GB| Password cracking utilities   |
+| kali-linux-rfid      | 1.5 GB| RFID tools                    |
+| kali-linux-sdr       | 2.4 GB| Software Defined Radio tools  |
+| kali-linux-voip      | 1.8 GB| VOIP tools                    |
+| kali-linux-web       | 4.9 GB| Web app testing               |
+| kali-linux-wireless  | 6.6 GB| Wireless tools                |
 
 
 
@@ -179,11 +182,11 @@ Scripts run, in order:
 
 ## FAQ
 
-#### This is awesome!
+##### This is awesome!
 
 Not a question, but thanks! :)
 
-#### Yo shit broke!
+##### Yo shit broke!
 
 Again, not a question, but let me know. Best place is here on Github, open a
 ticket, and be VERY detailed with your exact setup, send me screenshots. **If I
@@ -194,16 +197,6 @@ can't reproduce your problem, I won't be able to fix it.**
 - How are you establishing the SSH tunnel, program, version?
 
 **Run these commands and include the results in your ticket:**
-
-*All Systems:*
-```Shell
-vagrant version
-vagrant plugin list
-vboxmanage --version
-ssh -v localhost
-aws --version
-aws ec2 describe-tags
-```
 
 *Windows:*
 ```Shell
@@ -229,30 +222,40 @@ echo $BASH
 bash --version
 ```
 
+*All Systems:*
+```Shell
+vagrant version
+vagrant plugin list
+vboxmanage --version
+ssh -v localhost
+aws --version
+aws ec2 describe-tags
+```
+
 If you do ALL of this, I may be able to help you, no guarantees. It may
 take a few weeks, unless you want to hire me as a consultant.
 
-#### Can you remove the SSH tunnel for VNC?
+##### Can you remove the SSH tunnel for VNC?
 
 You can, but I chose not to, because it would be insecure. You could use a
 different VNC server, but would lose access to the Kali default Gnome 3.14
 desktop.
 
-#### Why did you call it "Diamonds"?
+##### Why did you call it "Diamonds"?
 
 I chose that name purely so I can go up to people at Defcon and ask them:
 
 **"Have you ever used Kali in the cloud with Diamonds?"**
 
-#### Do you work for Offensive Security?
+##### Do you work for Offensive Security?
 
 Not yet. I'm still waiting on that owl to deliver my letter...
 
-#### Can you build this for Azure?
+##### Can you build this for Azure?
 
 It's not at the top of my list, but I'll think about it.
 
-#### Do you do consulting?
+##### Do you do consulting?
 
 Yessir! You can email me: apolloclark@gmail.com
 
