@@ -21,14 +21,15 @@ Vagrant.configure(2) do |config|
 
     # VirtualBox Provider-specific configuration
     config.vm.provider "virtualbox" do |vb, override|
+    
+        # set the name
+        vb.name = "kali-linux-web-gui"
 
         # set the basebox to be Debian Jessie 64-bit, w/ 20 GB storage   
         # @see https://atlas.hashicorp.com/debian/boxes/jessie64
         override.vm.box = "ARTACK/debian-jessie"
         override.vm.box_url = "https://atlas.hashicorp.com/ARTACK/boxes/debian-jessie/versions/8.1.0/providers/virtualbox.box"
 
-        # show the UI
-    
         # set the CPU, memory, acceleration
         # @see https://www.virtualbox.org/manual/ch08.html
         vb.cpus = 1
@@ -51,7 +52,7 @@ Vagrant.configure(2) do |config|
         # Create a forwarded port mapping which allows access to a specific port
         # within the machine from a port on the host machine. In the example below,
         # accessing "localhost:8080" will access port 80 on the guest machine.
-        override.vm.network "forwarded_port", guest: 5900, host: 5900
+        # override.vm.network "forwarded_port", guest: 5900, host: 5900
  
         # setup local apt-get cache
         # if Vagrant.has_plugin?("vagrant-cachier")

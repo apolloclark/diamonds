@@ -22,6 +22,9 @@ Vagrant.configure(2) do |config|
     # VirtualBox Provider-specific configuration
     config.vm.provider "virtualbox" do |vb, override|
     
+        # set the name
+        vb.name = "kali-linux-full-cli"
+    
         # Display the VirtualBox GUI when booting the machine
         vb.gui = false
 

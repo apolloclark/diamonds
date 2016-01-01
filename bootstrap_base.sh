@@ -11,7 +11,7 @@ export DEBIAN_FRONTEND="noninteractive"
 
 
 #### Overwrite the default Debian mirrors/sources with the Kali mirrors/sources
-sudo cat >> /etc/apt/sources.list <<EOL
+sudo cat >> /etc/apt/sources.list <<'EOL'
 
 deb http://http.kali.org/kali sana main non-free contrib
 deb-src http://http.kali.org/kali sana main non-free contrib
