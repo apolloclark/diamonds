@@ -40,7 +40,11 @@ Do the "Platform Specific Install" steps, then do the "General Install" steps.
 - install puTTY, http://the.earth.li/~sgtatham/putty/latest/x86/putty.exe
 - install puTTYgen, http://the.earth.li/~sgtatham/putty/latest/x86/puttygen.exe
 - install TightVNCViewer, http://www.tightvnc.com/download.php
-- install Cygwin, https://cygwin.com/install.html
+- install Cygwin (32-bit), https://cygwin.com/install.html
+- update system PATH to include Cygwin first:
+```Shell
+setx /M PATH "C:\cygwin\bin\;%PATH%;"
+```
 
 *Mac / Linux:*
 - install vnc viewer

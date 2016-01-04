@@ -10,8 +10,8 @@ Vagrant.configure(2) do |config|
 
     # default provisioning script
     config.vm.provision :shell, path: "./../../bootstrap_base.sh"
-    # config.vm.provision :shell, path: "./provision/bootstrap.sh"
-    # config.vm.provision :shell, path: "./../../bootstrap_cleanup.sh"
+    config.vm.provision :shell, path: "./provision/bootstrap.sh"
+    config.vm.provision :shell, path: "./../../bootstrap_cleanup.sh"
 
 
 
@@ -23,7 +23,7 @@ Vagrant.configure(2) do |config|
     config.vm.provider "virtualbox" do |vb, override|
     
         # set the name
-        vb.name = "kali-linux-all-cli"
+        vb.name = "kali-linux-rfid-cli"
     
         # Display the VirtualBox GUI when booting the machine
         vb.gui = false
@@ -90,7 +90,7 @@ Vagrant.configure(2) do |config|
         aws.associate_public_ip       = true
         aws.subnet_id                 = aws_config["subnet_id"]
         aws.tags = {
-            'Name' => 'kali-linux-all-cli',
+            'Name' => 'kali-linux-rfid-cli',
         }
         
         # disable local file sharing, to prevent issues with Windows hosts

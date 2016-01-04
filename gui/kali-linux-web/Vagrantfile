@@ -26,9 +26,9 @@ Vagrant.configure(2) do |config|
         vb.name = "kali-linux-web-gui"
 
         # set the basebox to be Debian Jessie 64-bit, w/ 20 GB storage   
-        # @see https://atlas.hashicorp.com/debian/boxes/jessie64
-        override.vm.box = "ARTACK/debian-jessie"
-        override.vm.box_url = "https://atlas.hashicorp.com/ARTACK/boxes/debian-jessie/versions/8.1.0/providers/virtualbox.box"
+        # @see https://atlas.hashicorp.com/apolloclark
+        override.vm.box = "apolloclark/debian-jessie-64"
+        override.vm.box_url =" https://atlas.hashicorp.com/apolloclark/boxes/debian-jessie-64/versions/0.0.1/providers/virtualbox.box"
 
         # set the CPU, memory, acceleration
         # @see https://www.virtualbox.org/manual/ch08.html
