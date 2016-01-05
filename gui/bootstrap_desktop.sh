@@ -3,6 +3,17 @@
 #### Prevent apt-get from asking us questions while isntalling software
 export DEBIAN_FRONTEND="noninteractive"
 
+# Pre-answer the various install questions
+cat << EOF | debconf-set-selections
+keyboard-configuration keyboard-configuration/layout select USA
+keyboard-configuration keyboard-configuration/variant select USA
+EOF
+
+# install Gnome desktop
+sudo apt-get -y install kali-desktop-gnome
+
+
+
 # install Vino VNC
 sudo apt-get -y install vino
 

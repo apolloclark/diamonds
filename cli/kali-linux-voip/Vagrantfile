@@ -92,9 +92,19 @@ Vagrant.configure(2) do |config|
         aws.tags = {
             'Name' => 'kali-linux-voip-cli',
         }
-        
-        # disable local file sharing, to prevent issues with Windows hosts
-        override.vm.synced_folder "./data", "/vagrant", disabled: true
+
+        # Configure file sharing using rsync.
+        # This requires Windows users to have Cygwin or MinGW installed.
+        # @see https://www.vagrantup.com/blog/feature-preview-vagrant-1-5-rsync.html
+        # @see https://github.com/mitchellh/vagrant/blob/master/website/docs/source/v2/synced-folders/rsync.html.md
+        override.vm.synced_folder "./data", "/vagrant", type: "rsync"
+        # , disabled: true
+        # Fix for Windows users running Cygwin:
+        if Vagrant::Util::Platform.windows?
+            ENV["VAGRANT_DETECTED_OS"] = ENV["VAGRANT_DETECTED_OS"].to_s + " cygwin"
+        end
+        # To continuously update files bi-directionally, open another shell, run:
+        # "vagrant rsync-auto"
     
         # disable the vbguest plugin
         if Vagrant.has_plugin?("vagrant-vbguest")
