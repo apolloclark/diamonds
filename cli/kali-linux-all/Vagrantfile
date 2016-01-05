@@ -10,8 +10,8 @@ Vagrant.configure(2) do |config|
 
     # default provisioning script
     config.vm.provision :shell, path: "./../../bootstrap_base.sh"
-    # config.vm.provision :shell, path: "./provision/bootstrap.sh"
-    # config.vm.provision :shell, path: "./../../bootstrap_cleanup.sh"
+    config.vm.provision :shell, path: "./provision/bootstrap.sh"
+    config.vm.provision :shell, path: "./../../bootstrap_cleanup.sh"
 
 
 
@@ -34,7 +34,7 @@ Vagrant.configure(2) do |config|
         # set the base box to Debian Jessie, 64-bit
         # @see https://atlas.hashicorp.com/apolloclark
         override.vm.box = "apolloclark/debian-jessie-64"
-        override.vm.box_url =" https://atlas.hashicorp.com/apolloclark/boxes/debian-jessie-64/versions/0.0.1/providers/virtualbox.box"
+        override.vm.box_url = "https://atlas.hashicorp.com/apolloclark/boxes/debian-jessie-64/versions/0.0.1/providers/virtualbox.box"
     
         # Share a folder to the guest VM, types: docker, nfs, rsync, smb, virtualbox
         # Windows supports: smb

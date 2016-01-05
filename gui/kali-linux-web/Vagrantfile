@@ -3,7 +3,7 @@
 
 Vagrant.configure(2) do |config|
 
-    # by default, use the empty dummy box
+    # use the empty dummy box
     config.vm.box = "dummy"
     config.vm.box_url = "https://github.com/mitchellh/vagrant-aws/raw/master/dummy.box"
 
