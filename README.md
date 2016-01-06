@@ -35,7 +35,7 @@ https://www.kali.org/news/kali-linux-metapackages/
 
 Do the "Platform Specific Install" steps, then do the "General Install" steps.
 
-*Windows:*
+**Windows:**
 - update Powershell, https://www.microsoft.com/en-us/download/details.aspx?id=48729
 - install puTTY, http://the.earth.li/~sgtatham/putty/latest/x86/putty.exe
 - install puTTYgen, http://the.earth.li/~sgtatham/putty/latest/x86/puttygen.exe
@@ -46,10 +46,10 @@ Do the "Platform Specific Install" steps, then do the "General Install" steps.
 setx /M PATH "C:\cygwin\bin\;%PATH%;"
 ```
 
-*Mac / Linux:*
+**Mac / Linux:**
 - install vnc viewer
 
-*General Install:*
+**General Install:**
 - install [Python](https://www.python.org/downloads/)
 - install [Pip](https://pip.pypa.io/en/stable/installing/)
 - install, configure [AWS-CLI](https://github.com/aws/aws-cli)
@@ -104,7 +104,7 @@ To access it, you'll need to SSH into the Kali instance. Luckily, a lot of the
 better quality VNC clients support this. Security of SSH, convenience of VNC,
 BOOM!
 
-*Windows:*
+**Windows:**
 - convert your AWS private key to a puTTY format, using puTTYgen
 
     https://github.com/Varying-Vagrant-Vagrants/VVV/wiki/Connect-to-Your-Vagrant-Virtual-Machine-with-PuTTY
@@ -114,7 +114,7 @@ BOOM!
 - open TightVNC
 - login to the VNC instance, at 127.0.0.1:5900
 
-*Mac / Linx:*
+**Mac / Linx:**
 - ssh into the Kali instance, setting up an SSH tunnel, ex:
 ```Shell
 ssh -nNT -L 5900:127.0.0.1:5900 admin@<ec2-dns> -i <aws_key_file>
@@ -187,24 +187,24 @@ Scripts run, in order:
 
 ## FAQ
 
-##### This is awesome!
+#### This is awesome!
 
 Not a question, but thanks! :)
 
-##### Yo shit broke!
+#### Yo shit broke!
 
 Again, not a question, but let me know. Best place is here on Github, open a
 ticket, and be VERY detailed with your exact setup, send me screenshots. **If I
 can't reproduce your problem, I won't be able to fix it. Run these commands and
 include the results in your ticket:**
 
-*Windows:*
+**Windows:**
 ```Shell
 systeminfo | findstr /B /C:"OS Name" /C:"OS Version"
 powershell $PSVersionTable
 ```
 
-*Mac:*
+**Mac:**
 ```Shell
 sw_vers
 xcode-select -p
@@ -214,7 +214,7 @@ echo $BASH
 bash --version
 ```
 
-*Linux:*
+**Linux:**
 ```Shell
 uname -a
 echo $SHELL
@@ -222,7 +222,7 @@ echo $BASH
 bash --version
 ```
 
-*All Systems:*
+**All Systems:**
 ```Shell
 vagrant version
 vagrant plugin list
@@ -230,36 +230,36 @@ vboxmanage --version
 ssh -v localhost
 aws --version
 aws ec2 describe-tags
+vagrant up <other_options> --debug
 ```
 
-- Run the Vagrant command, add "--debug" at the end, include the output
 - Which VNC client are you using, version?
 - How are you establishing the SSH tunnel, program, version?
 
 If you do ALL of this, I may be able to help you, no guarantees. It may
 take a few weeks, unless you want to hire me as a consultant.
 
-##### Can you remove the SSH tunnel for VNC?
+#### Can you remove the SSH tunnel for VNC?
 
 You can, but I chose not to, because it would be insecure. You could use a
 different VNC server, but would lose access to the Kali default Gnome 3.14
 desktop.
 
-##### Why did you call it "Diamonds"?
+#### Why did you call it "Diamonds"?
 
 I chose that name purely so I can go up to people at Defcon and ask them:
 
-**"Have you ever used Kali in the cloud with Diamonds?"**
+*"Have you ever used Kali in the cloud with Diamonds?"*
 
-##### Do you work for Offensive Security?
+#### Do you work for Offensive Security?
 
 Not yet. I'm still waiting on that owl to deliver my letter...
 
-##### Can you build this for Digital Ocean / Rackspace /Azure?
+#### Can you build this for Digital Ocean / Rackspace /Azure?
 
 It's not at the top of my list, but I'll think about it.
 
-##### Do you do consulting?
+#### Do you do consulting?
 
 Yessir! You can email me: apolloclark@gmail.com
 
