@@ -9,7 +9,7 @@ Vagrant.configure(2) do |config|
     config.vm.box_url = "https://github.com/mitchellh/vagrant-aws/raw/master/dummy.box"
 
     # default provisioning script
-    config.vm.provision :shell, path: "./../../bootstrap_base.sh"
+    # config.vm.provision :shell, path: "./../../bootstrap_base.sh"
     config.vm.provision :shell, path: "./provision/bootstrap.sh"
     config.vm.provision :shell, path: "./../../bootstrap_cleanup.sh"
 
@@ -31,10 +31,10 @@ Vagrant.configure(2) do |config|
         # Customize the amount of memory on the VM:
         vb.memory = "1024"
 
-        # set the base box to Debian Jessie, 64-bit
+        # set the base box to kali-linux-base-cli, based on Debian Jessie 64-bit
         # @see https://atlas.hashicorp.com/apolloclark
-        override.vm.box = "apolloclark/debian-jessie-64"
-        override.vm.box_url = "https://atlas.hashicorp.com/apolloclark/boxes/debian-jessie-64/versions/0.0.1/providers/virtualbox.box"
+        override.vm.box = "apolloclark/kali-linux-base-cli"
+        override.vm.box_url = "https://atlas.hashicorp.com/apolloclark/boxes/kali-linux-base-cli/versions/0.0.2/providers/virtualbox.box"
     
         # Share a folder to the guest VM, types: docker, nfs, rsync, smb, virtualbox
         # Windows supports: smb

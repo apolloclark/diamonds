@@ -66,4 +66,4 @@ fi
 # install basic utilities, base kali package
 sudo apt-get update -y
 sudo apt-get -q -y --force-yes install \
-	debconf-utils build-essential linux-headers-$(uname -r) kali-linux
+	debconf-utils build-essential kali-linux linux-headers-$(uname -r)
