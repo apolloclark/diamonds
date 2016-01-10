@@ -59,7 +59,7 @@ Vagrant.configure(2) do |config|
         # Load sensitive AWS credentials from external file, DO NOT save in Repo!!!
         # @see http://blog-osshive.rhcloud.com/2014/02/05/provisioning-aws-instances-with-vagrant/
         require 'yaml'
-        aws_filepath = File.dirname(__FILE__) + "./../../aws-config.yml"
+        aws_filepath = File.dirname(__FILE__) + "/../../aws-config.yml"
         if File.exist?(aws_filepath)
             aws_config  = YAML.load_file(aws_filepath)["aws"]
         else
