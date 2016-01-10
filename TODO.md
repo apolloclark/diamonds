@@ -8,7 +8,11 @@ List of various things, in order, of what I want to do:
     - install Gauntlt
     - install Jenkins
     - install Jmeter
+    - install Selenium
+    - install PhantomJS
+    - instll Crawljax
     - install ELK stack
+    - install Gryffin
     - install Snort
     - code quality tools
         - Python
