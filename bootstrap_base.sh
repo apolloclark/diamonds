@@ -10,14 +10,26 @@ export DEBIAN_FRONTEND="noninteractive"
 
 
 
+# install native headers
+# sudo apt-get -q -y --force-yes install linux-headers-$(uname -r)
+
 #### Overwrite the default Debian mirrors/sources with the Kali mirrors/sources
-sudo cat >> /etc/apt/sources.list <<'EOL'
+sudo cat > /etc/apt/sources.list <<'EOL'
 
 deb http://http.kali.org/kali sana main non-free contrib
 deb-src http://http.kali.org/kali sana main non-free contrib
 
 deb http://security.kali.org/kali-security/ sana/updates main contrib non-free
 deb-src http://security.kali.org/kali-security/ sana/updates main contrib non-free
+
+# kali-rolling
+# "... updated packages from kali-dev and copies them to kali-rolling only when
+# they have been verified to be installable."
+# deb http://http.kali.org/kali kali-rolling main contrib non-free
+# deb http://security.kali.org/kali-security kali-rolling/updates main contrib non-free
+
+# list of all Kali repos:
+# http://docs.kali.org/general-use/kali-linux-sources-list-repositories
 EOL
 
 #### Download and import the official Kali Linux key
@@ -63,7 +75,7 @@ fi
 
 
 
-# install basic utilities, base kali package
+# install basic utilities, base kali package, kernel headers
 sudo apt-get update -y
 sudo apt-get -q -y --force-yes install \
-	debconf-utils build-essential kali-linux linux-headers-$(uname -r)
+	debconf-utils build-essential kali-linux ".*linux-headers";
