@@ -24,10 +24,21 @@ apt-get -y --force-yes install grub2
 
 
 
+# set the debconf selections
+debconf-set-selections <<< 'unattended-upgrades unattended-upgrades/enable_auto_updates boolean true'
+debconf-set-selections <<< 'unattended-upgrades/origins_pattern: "origin=Debian,codename=${distro_codename},label=Debian-Security";'
+
+# delete the current unattended-upgrades file
+sudo rm -f /etc/apt/apt.conf.d/50unattended-upgrades
+sudo rm -f /etc/apt/apt.conf.d/20auto-upgrades
+
+
+
 #### Update to the newest version of Kali
 sudo apt-get update
 sudo apt-get -y --force-yes upgrade
-sudo apt-get -o Dpkg::Options::="--force-confnew" --force-yes -fuy dist-upgrade
+# sudo apt-get -o Dpkg::Options::="--force-confnew" --force-yes -fuy dist-upgrade
+sudo apt-get -y -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" dist-upgrade
 
 #### Clean up after apt-get
 sudo apt-get -y autoremove --purge

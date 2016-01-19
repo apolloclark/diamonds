@@ -10,23 +10,17 @@ export DEBIAN_FRONTEND="noninteractive"
 
 
 
-# install native headers
-# sudo apt-get -q -y --force-yes install linux-headers-$(uname -r)
+# who are we?
+whoami
+pwd
+uname -a
 
 #### Overwrite the default Debian mirrors/sources with the Kali mirrors/sources
 sudo cat > /etc/apt/sources.list <<'EOL'
 
-deb http://http.kali.org/kali sana main non-free contrib
-deb-src http://http.kali.org/kali sana main non-free contrib
-
-deb http://security.kali.org/kali-security/ sana/updates main contrib non-free
-deb-src http://security.kali.org/kali-security/ sana/updates main contrib non-free
-
 # kali-rolling
-# "... updated packages from kali-dev and copies them to kali-rolling only when
-# they have been verified to be installable."
-# deb http://http.kali.org/kali kali-rolling main contrib non-free
-# deb http://security.kali.org/kali-security kali-rolling/updates main contrib non-free
+deb http://http.kali.org/kali kali-rolling main contrib non-free
+deb http://security.kali.org/kali-security kali-rolling/updates main contrib non-free
 
 # list of all Kali repos:
 # http://docs.kali.org/general-use/kali-linux-sources-list-repositories
@@ -63,6 +57,9 @@ debconf-set-selections <<< 'macchanger macchanger/automatically_run boolean fals
 
 ## wireshark
 debconf-set-selections <<< 'wireshark-common wireshark-common/install-setuid boolean false'
+
+## libc6
+debconf-set-selections <<< 'libc6 libraries/restart-without-asking boolean true'
 
 
 

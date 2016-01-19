@@ -92,6 +92,14 @@ Vagrant.configure(2) do |config|
         aws.tags = {
             'Name' => 'kali-linux-web-cli',
         }
+        # use 40GB, because we like it UUGE!
+        aws.block_device_mapping = [
+            {
+                'DeviceName' => '/dev/xvda',
+                'Ebs.VolumeSize' => 40,
+                'Ebs.DeleteOnTermination' => 'false'
+            }
+        ]
 
         # Configure file sharing using rsync.
         # This requires Windows users to have Cygwin or MinGW installed.
@@ -99,6 +107,7 @@ Vagrant.configure(2) do |config|
         # @see https://github.com/mitchellh/vagrant/blob/master/website/docs/source/v2/synced-folders/rsync.html.md
         override.vm.synced_folder "./data", "/vagrant", type: "rsync"
         # , disabled: true
+        
         # Fix for Windows users running Cygwin:
         if Vagrant::Util::Platform.windows?
             ENV["VAGRANT_DETECTED_OS"] = ENV["VAGRANT_DETECTED_OS"].to_s + " cygwin"
