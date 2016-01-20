@@ -76,3 +76,10 @@ fi
 sudo apt-get update -y
 sudo apt-get -q -y --force-yes install \
 	debconf-utils build-essential kali-linux ".*linux-headers";
+
+
+
+# Autoresize the root EBS partition
+sudo /sbin/parted ---pretend-input-tty /dev/xvda resizepart 1 yes 100%
+sudo resize2fs /dev/xvda1
+

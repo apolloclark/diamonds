@@ -23,7 +23,7 @@ sudo sed -i '8c\AutomaticLogin = admin' /etc/gdm3/daemon.conf
 sudo sed -i '11c\TimedLoginEnable = true' /etc/gdm3/daemon.conf
 
 # start Vino on system startup
-sudo tee -a /home/admin/.profile <<'EOF'
+sudo cat > /home/admin/.profile <<'EOF'
 
 # set Vino to run, if it's not
 ps cax | grep "vino-server" > /dev/null
