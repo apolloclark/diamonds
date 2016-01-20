@@ -20,7 +20,9 @@ sudo cat > /etc/apt/sources.list <<'EOL'
 
 # kali-rolling
 deb http://http.kali.org/kali kali-rolling main contrib non-free
-deb http://security.kali.org/kali-security kali-rolling/updates main contrib non-free
+deb-src http://http.kali.org/kali kali-rolling main contrib non-free
+
+# deb http://security.kali.org/dists/kali-current kali-current/updates main contrib non-free
 
 # list of all Kali repos:
 # http://docs.kali.org/general-use/kali-linux-sources-list-repositories
@@ -64,7 +66,7 @@ debconf-set-selections <<< 'libc6 libraries/restart-without-asking boolean true'
 
 
 # create the "admin" user, if necessary
-if ! id -u admin > /dev/null 2>$1; then
+if ! id -u admin > /dev/null 2>&1; then
     sudo adduser  --disabled-password --gecos "" --shell /bin/bash --ingroup sudo admin
     sudo chown -R admin /home/admin
     echo "admin ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
