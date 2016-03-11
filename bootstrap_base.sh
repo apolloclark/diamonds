@@ -82,6 +82,8 @@ sudo apt-get -q -y --force-yes install \
 
 
 # Autoresize the root EBS partition
-sudo /sbin/parted ---pretend-input-tty /dev/xvda resizepart 1 yes 100%
-sudo resize2fs /dev/xvda1
+if [[ $(df -h | grep 'xvda1') ]]; then
+    sudo /sbin/parted ---pretend-input-tty /dev/xvda resizepart 1 yes 100%
+    sudo resize2fs /dev/xvda1
+fi
 
