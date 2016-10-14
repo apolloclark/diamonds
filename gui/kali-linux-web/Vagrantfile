@@ -28,7 +28,7 @@ Vagrant.configure(2) do |config|
         # set the basebox to be Debian Jessie 64-bit, w/ 20 GB storage   
         # @see https://atlas.hashicorp.com/apolloclark
         override.vm.box = "apolloclark/debian-jessie-64"
-        override.vm.box_url =" https://atlas.hashicorp.com/apolloclark/boxes/debian-jessie-64/versions/0.0.1/providers/virtualbox.box"
+        override.vm.box_url ="https://atlas.hashicorp.com/apolloclark/boxes/debian-jessie-64/versions/0.0.1/providers/virtualbox.box"
 
         # set the CPU, memory, acceleration
         # @see https://www.virtualbox.org/manual/ch08.html
@@ -60,6 +60,11 @@ Vagrant.configure(2) do |config|
             # More info on the "Usage" link above
             # override.cache.scope = :box
         # end
+    
+        # disable the vbguest update plugin
+        if Vagrant.has_plugin?("vagrant-vbguest")
+            override.vbguest.auto_update = false
+        end
     end
 
 
@@ -90,8 +95,8 @@ Vagrant.configure(2) do |config|
         # @see https://wiki.debian.org/Cloud/AmazonEC2Image/Jessie
         aws.region = "us-east-1"
         aws.ami = "ami-116d857a"
-            # "ami-116d857a" HVM
-            # "ami-896d85e2" Paravirtualization
+                # "ami-116d857a" HVM
+                # "ami-896d85e2" Paravirtualization
         
         # set instance settings
         # @see https://aws.amazon.com/ec2/instance-types/

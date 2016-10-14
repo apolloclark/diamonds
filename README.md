@@ -89,7 +89,7 @@ vagrant up --provider=aws
 - sit back (for like 30+ min sometimes...)
 - restart the server
 - Enjoy!
-
+<br/><br/><br/><br/><br/>
 
 
 ## Can I VNC into this?
