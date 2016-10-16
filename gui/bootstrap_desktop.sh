@@ -9,7 +9,7 @@ keyboard-configuration keyboard-configuration/layout select USA
 keyboard-configuration keyboard-configuration/variant select USA
 EOF
 
-# install Gnome desktop
+# install Gnome desktop, 3.21.90
 sudo apt-get -y install kali-desktop-gnome
 
 
@@ -34,12 +34,19 @@ else
 
     # configure Vino to only listen to localhost, unecrypted
     export DISPLAY=:0.0
+    gsettings set org.gnome.desktop.lockdown disable-lock-screen true
+    gsettings set org.gnome.desktop.lockdown disable-user-switching true
+    gsettings set org.gnome.desktop.lockdown disable-log-out true
+    
+    gsettings set org.gnome.Vino enabled true
     gsettings set org.gnome.Vino authentication-methods "['none']"
     gsettings set org.gnome.Vino require-encryption false
     gsettings set org.gnome.Vino network-interface lo
     gsettings set org.gnome.Vino prompt-enabled false
     gsettings set org.gnome.Vino notify-on-connect false
-    nohup /usr/lib/vino/vino-server &> /dev/null &
+    gsettings set org.gnome.Vino lock-screen-on-disconnect false
+    
+    nohup /usr/lib/vino/vino-server --sm-disable &> /dev/null &
 fi
 
 EOF

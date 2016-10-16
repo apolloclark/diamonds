@@ -117,6 +117,11 @@ BOOM!
 **Mac / Linx:**
 - ssh into the Kali instance, setting up an SSH tunnel, ex:
 ```Shell
+
+# create SSH port forwarding tunnel
+ssh -L 5900:127.0.0.1:5900 admin@<ec2-dns> -i <aws_key_file>
+
+# create SSH port forwarding tunnel without a Terminal
 ssh -nNT -L 5900:127.0.0.1:5900 admin@<ec2-dns> -i <aws_key_file>
 ```
 - login to the VNC instnace, at 127.0.0.1:5900

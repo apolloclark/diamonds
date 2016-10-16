@@ -77,7 +77,7 @@ fi
 # install basic utilities, base kali package, kernel headers
 sudo apt-get update -y
 sudo apt-get -q -y --force-yes install \
-	debconf-utils build-essential kali-linux ".*linux-headers";
+	debconf-utils build-essential mlocate kali-linux ".*linux-headers";
 
 
 
