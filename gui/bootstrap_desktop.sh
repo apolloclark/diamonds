@@ -38,6 +38,8 @@ else
     gsettings set org.gnome.desktop.lockdown disable-user-switching true
     gsettings set org.gnome.desktop.lockdown disable-log-out true
     
+    dconf write /org/gnome/empathy/notifications/notifications-enabled false
+    
     gsettings set org.gnome.Vino enabled true
     gsettings set org.gnome.Vino authentication-methods "['none']"
     gsettings set org.gnome.Vino require-encryption false
