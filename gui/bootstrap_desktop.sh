@@ -37,6 +37,13 @@ else
     gsettings set org.gnome.desktop.lockdown disable-lock-screen true
     gsettings set org.gnome.desktop.lockdown disable-user-switching true
     gsettings set org.gnome.desktop.lockdown disable-log-out true
+    gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-battery-timeout 0
+    gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-battery-type 'nothing'
+    gsettings set org.gnome.desktop.screensaver lock-enabled false
+    gsettings set org.gnome.desktop.session idle-delay 0
+    xset s off # don't activate screensaver
+    xset -dpms # disable DPMS (Energy Star) features.
+    xset s noblank # don't blank the video device
     
     dconf write /org/gnome/empathy/notifications/notifications-enabled false
     
