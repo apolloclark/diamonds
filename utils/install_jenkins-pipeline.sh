@@ -6,4 +6,5 @@ git clone https://github.com/apolloclark/vagrant-jenkins-pipeline
 cd ./vagrant-jenkins-pipeline
 sudo cp -R ./data/ /vagrant/
 cd ./provision
-sudo ./bootstrap.sh
+sudo bash ./bootstrap.sh
+sudo bash ./bootstrap_python.sh
