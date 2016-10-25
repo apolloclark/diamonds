@@ -2,7 +2,7 @@
 
 **"Kali in the cloud with Diamonds!"**
 
-Would you like to build Kali Linux 2.0 from source, run it on Amazon, make it
+Would you like to build Kali Linux 2016.2 from source, run it on Amazon, make it
 easy for your dev team to run your attacks, and see it on your iPad over VNC?
 I sure would, so I made it happen! :)
 
