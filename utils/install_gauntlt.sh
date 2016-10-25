@@ -7,6 +7,7 @@ cat <<'EOL' | sudo tee /etc/apt/sources.list
 deb http://http.kali.org/kali kali-rolling main contrib non-free
 deb-src http://http.kali.org/kali kali-rolling main contrib non-free
 EOL
+
 sudo apt-get update
 sudo apt-get install -y locate
 sudo updatedb

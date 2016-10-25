@@ -12,5 +12,9 @@ if ! ps aux | grep -q "[g]ruyere"; then
 else
 	echo "Gruyere already running..."
 fi
+
+# check we're ready
 bash ./ready_to_rumble.sh
+
+# run the .attack files
 gauntlt
