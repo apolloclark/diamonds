@@ -16,12 +16,12 @@ pwd
 uname -a
 
 #### Overwrite the default Debian mirrors/sources with the Kali mirrors/sources
-cat <<'EOL' | sudo tee /etc/apt/sources.list
+cat <<'EOF' | sudo tee /etc/apt/sources.list
 
 # kali-rolling
 deb http://http.kali.org/kali kali-rolling main contrib non-free
 deb-src http://http.kali.org/kali kali-rolling main contrib non-free
-EOL
+EOF
 
 #### Download and import the official Kali Linux key
 wget -q -O - https://www.kali.org/archive-key.asc | gpg --import
@@ -77,12 +77,12 @@ sudo apt-get -q -y --force-yes install \
 
 
 #### Overwrite the default Debian mirrors/sources with the Kali mirrors/sources
-cat <<'EOL' | sudo tee /etc/apt/sources.list
+cat <<'EOF' | sudo tee /etc/apt/sources.list
 
 # kali-rolling
 deb http://http.kali.org/kali kali-rolling main contrib non-free
 deb-src http://http.kali.org/kali kali-rolling main contrib non-free
-EOL
+EOF
 
 # Autoresize the root EBS partition
 if [[ $(df -h | grep 'xvda1') ]]; then
