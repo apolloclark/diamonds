@@ -16,7 +16,7 @@ pwd
 uname -a
 
 #### Overwrite the default Debian mirrors/sources with the Kali mirrors/sources
-cat <<'EOF' | sudo tee /etc/apt/sources.list
+cat <<'EOF' | tee /etc/apt/sources.list
 
 # kali-rolling
 deb http://http.kali.org/kali kali-rolling main contrib non-free
@@ -25,13 +25,13 @@ EOF
 
 #### Download and import the official Kali Linux key
 wget -q -O - https://www.kali.org/archive-key.asc | gpg --import
-gpg -a --export ED444FF07D8D0BF6 | sudo apt-key add -
+gpg -a --export ED444FF07D8D0BF6 | apt-key add -
 
 #### Update our apt db
-sudo apt-get update -y
+apt-get update -y
 
 #### Install the Kali keyring
-sudo apt-get install -y --force-yes kali-archive-keyring
+apt-get install -y --force-yes kali-archive-keyring
 
 
 
@@ -62,22 +62,22 @@ debconf-set-selections <<< 'libc6 libraries/restart-without-asking boolean true'
 
 # create the "admin" user, if necessary
 if ! id -u admin > /dev/null 2>&1; then
-    sudo adduser  --disabled-password --gecos "" --shell /bin/bash --ingroup sudo admin
-    sudo chown -R admin /home/admin
+    adduser  --disabled-password --gecos "" --shell /bin/bash --ingroup admin
+    chown -R admin /home/admin
     echo "admin ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 fi
 
 
 
 # install basic utilities, base kali package, kernel headers
-sudo apt-get update -y
-sudo apt-get -q -y --force-yes install \
+apt-get update -y
+apt-get -q -y --force-yes install \
 	debconf-utils build-essential mlocate kali-linux ".*linux-headers";
 
 
 
 #### Overwrite the default Debian mirrors/sources with the Kali mirrors/sources
-cat <<'EOF' | sudo tee /etc/apt/sources.list
+cat <<'EOF' | tee /etc/apt/sources.list
 
 # kali-rolling
 deb http://http.kali.org/kali kali-rolling main contrib non-free
@@ -86,7 +86,7 @@ EOF
 
 # Autoresize the root EBS partition
 if [[ $(df -h | grep 'xvda1') ]]; then
-    sudo /sbin/parted ---pretend-input-tty /dev/xvda resizepart 1 yes 100%
-    sudo resize2fs /dev/xvda1
+    /sbin/parted ---pretend-input-tty /dev/xvda resizepart 1 yes 100%
+    resize2fs /dev/xvda1
 fi
 

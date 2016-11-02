@@ -16,5 +16,6 @@ git clone https://github.com/gauntlt/gauntlt
 cd gauntlt
 # write out new install_gauntlt_deps.sh
 source ./install_gauntlt_deps.sh
+echo '[[ -r ~/.bashrc ]] && . ~/.bashrc' >> ~/.profile
 bash ./ready_to_rumble.sh
 gauntlt

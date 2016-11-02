@@ -5,7 +5,7 @@ export DEBIAN_FRONTEND=noninteractive
 
 #### The Debian AMI uses the Syslinux bootloader but Kali uses Grub2 so let's use Grub2
 # update the grub device.map, necessary for AWS Debian for now...
-sudo grub-mkdevicemap
+grub-mkdevicemap
 
 # set the debconf selections
 debconf-set-selections <<< 'grub-installer grub-installer/only_debian boolean true'
@@ -29,20 +29,20 @@ debconf-set-selections <<< 'unattended-upgrades unattended-upgrades/enable_auto_
 debconf-set-selections <<< 'unattended-upgrades/origins_pattern: "origin=Debian,codename=${distro_codename},label=Debian-Security";'
 
 # delete the current unattended-upgrades file
-sudo rm -f /etc/apt/apt.conf.d/50unattended-upgrades
-sudo rm -f /etc/apt/apt.conf.d/20auto-upgrades
+rm -f /etc/apt/apt.conf.d/50unattended-upgrades
+rm -f /etc/apt/apt.conf.d/20auto-upgrades
 
 
 
 #### Update to the newest version of Kali
-sudo apt-get update
-sudo apt-get -y --force-yes upgrade
-# sudo apt-get -o Dpkg::Options::="--force-confnew" --force-yes -fuy dist-upgrade
-sudo apt-get -y -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" dist-upgrade
+apt-get update
+apt-get -y --force-yes upgrade
+# apt-get -o Dpkg::Options::="--force-confnew" --force-yes -fuy dist-upgrade
+apt-get -y -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" dist-upgrade
 
 #### Clean up after apt-get
-sudo apt-get -y autoremove --purge
-sudo apt-get -y clean
+apt-get -y autoremove --purge
+apt-get -y clean
 
  
   
@@ -51,9 +51,9 @@ sudo apt-get -y clean
 # @see https://raw.githubusercontent.com/averagesecurityguy/packer-debian2kali-ec2/master/scripts/cleanup.sh
 # Remove SSH key pairs according to AWS requirements for shared AMIs:
 # @see http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/building-shared-amis.html
-# sudo shred -u /etc/ssh/*_key /etc/ssh/*_key.pub
-# sudo shred -u /home/admin/.ssh/*
-# sudo shred -u /home/vagrant/.ssh/*
+# shred -u /etc/ssh/*_key /etc/ssh/*_key.pub
+# shred -u /home/admin/.ssh/*
+# shred -u /home/vagrant/.ssh/*
 
 # Wipe our logs
 echo "INFO: Cleaning log files and history..."
@@ -88,62 +88,62 @@ history -w
 
 # Disable services auto-starting, for better security
 # @see http://manpages.ubuntu.com/manpages/hardy/man8/update-rc.d.8.html
-# sudo update-rc.d <service> defaults, to re-enable
+# update-rc.d <service> defaults, to re-enable
 echo "INFO: Disabling service auto-start..."
 
 # save the output of service status
-services_status=$(sudo service --status-all  2>&1);
+services_status=$(service --status-all  2>&1);
 
 if grep -q " \[ + \]  smbd" <<< "$services_status"; then
     echo "INFO: Disabling Samba / smbd"   
-    sudo service smbd stop
-    sudo update-rc.d -f smbd remove
+    service smbd stop
+    update-rc.d -f smbd remove
 fi
 
 if grep -q " \[ + \]  samba" <<< "$services_status"; then
     echo "INFO: Disabling Samba"   
-    sudo service samba stop
-    sudo update-rc.d -f samba remove
+    service samba stop
+    update-rc.d -f samba remove
 fi
 
 if grep -q " \[ + \]  samba-ad-dc" <<< "$services_status"; then
     echo "INFO: Disabling Samba / AD-DC"   
-    sudo service samba-ad-dc stop
-    sudo update-rc.d -f samba-ad-dc remove
+    service samba-ad-dc stop
+    update-rc.d -f samba-ad-dc remove
 fi
 
 if grep -q " \[ + \]  nmbd" <<< "$services_status"; then
     echo "INFO: Disabling NetBIOS"   
-    sudo service nmbd stop
-    sudo update-rc.d -f nmbd remove
+    service nmbd stop
+    update-rc.d -f nmbd remove
 fi
 
 if grep -q " \[ + \]  apache2" <<< "$services_status"; then
     echo "INFO: Disabling Apache"   
-    sudo service apache2 stop
-    sudo update-rc.d -f apache2 remove
+    service apache2 stop
+    update-rc.d -f apache2 remove
 fi
 
 if grep -q " \[ + \]  mysql" <<< "$services_status"; then 
     echo "INFO: Disabling MySQL"  
-    sudo service mysql stop
-    sudo update-rc.d -f mysql remove
+    service mysql stop
+    update-rc.d -f mysql remove
 fi
 
 if grep -q " \[ + \]  postgresql" <<< "$services_status"; then
     echo "INFO: Disabling Postgres"   
-    sudo service postgresql stop
-    sudo update-rc.d -f postgresql remove
+    service postgresql stop
+    update-rc.d -f postgresql remove
 fi
 
 if grep -q " \[ + \]  dradis" <<< "$services_status"; then  
     echo "INFO: Disabling Dradis" 
-    sudo service dradis stop
-    sudo update-rc.d -f dradis remove
+    service dradis stop
+    update-rc.d -f dradis remove
 fi
 
 if grep -q " \[ + \]  beef-xss" <<< "$services_status"; then 
     echo "INFO: Disabling Beef-XSS"  
-    sudo service beef-xss stop
-    sudo update-rc.d -f beef-xss remove
+    service beef-xss stop
+    update-rc.d -f beef-xss remove
 fi

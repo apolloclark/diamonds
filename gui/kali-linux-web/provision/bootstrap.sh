@@ -7,4 +7,4 @@ export DEBIAN_FRONTEND="noninteractive"
 # List taken from the official Kali-live-build script at: 
 # http://git.kali.org/gitweb/?p=live-build-config.git;a=blob_plain;f=config
 # /package-lists/kali.list.chroot;hb=HEAD
-sudo apt-get -q -y --force-yes install kali-linux-web
+apt-get -q -y --force-yes install kali-linux-web

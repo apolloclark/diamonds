@@ -10,20 +10,20 @@ keyboard-configuration keyboard-configuration/variant select USA
 EOF
 
 # install Gnome desktop, 3.21.90
-sudo apt-get -y install kali-desktop-gnome
+apt-get -y install kali-desktop-gnome
 
 
 
 # install Vino VNC
-sudo apt-get -y install vino
+apt-get -y install vino
 
 # setup Gnome to autologin the "admin" user
-sudo sed -i '7c\AutomaticLoginEnable = true' /etc/gdm3/daemon.conf
-sudo sed -i '8c\AutomaticLogin = admin' /etc/gdm3/daemon.conf
-sudo sed -i '11c\TimedLoginEnable = true' /etc/gdm3/daemon.conf
+sed -i '7c\AutomaticLoginEnable = true' /etc/gdm3/daemon.conf
+sed -i '8c\AutomaticLogin = admin' /etc/gdm3/daemon.conf
+sed -i '11c\TimedLoginEnable = true' /etc/gdm3/daemon.conf
 
 # start Vino on system startup
-sudo cat > /home/admin/.profile <<'EOF'
+cat > /home/$(whoami)/.profile <<'EOF'
 
 # set Vino to run, if it's not
 ps cax | grep "vino-server" > /dev/null
